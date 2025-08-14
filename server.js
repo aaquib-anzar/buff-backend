@@ -12,7 +12,7 @@ PORT = 8000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -26,6 +26,7 @@ const razorpay = new Razorpay({
 })
 
 app.post("/create-order", async(req, res) => {
+  console.log("hi")
     try {
         const {amount} = req.body
         const options = {
